@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <Windows.h>
 
 int main()
 {
@@ -65,8 +66,8 @@ int main()
 	{
 		std::cout << "\n\nUndefined";
 	}
-
-	std::cin.get();
-	std::cin.get();
+	
+	std::cout << "\n\n";
+	system("pause");
 	return 0;
 }
