@@ -27,9 +27,8 @@ int main()
 		std::cout << std::endl;
 	}
 
-	int count = 0, row[n], r = 0;
+	int count[n];
 	bool checkNegativeNumber = false;
-
 	for (int i = 0; i < n; i++)
 	{
 		int temp = 0;
@@ -41,21 +40,25 @@ int main()
 				checkNegativeNumber = true;
 			}
 		}
-
-		if (count < temp)
-		{
-			count = temp;
-			row[r] = i;
-			r++;
-		}
+		count[i] = temp;
 	}
-
 
 	if (checkNegativeNumber)
 	{
-		for (int i = 0; i < r; i++)
+		int max = count[0];
+		for (int i = 0; i < n; i++)
 		{
-			std::cout << "\n" << row[i];
+			if (count[i] > max)
+			{
+				max = count[i];
+			}
+		}
+		for (int i = 0; i < n; i++)
+		{
+			if (count[i] == max)
+			{
+				std::cout << "\n" << i;
+			}
 		}
 	}
 	else
