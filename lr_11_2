@@ -1,0 +1,29 @@
+#include <iostream>
+#include <iomanip>
+#include <Windows.h>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Ukrainian");
+
+	char s[] = "Залишити тiльки першi та останнi лiтери слiв";
+	char s2[] = " ";
+
+	cout << s << endl;
+	cout << s[0] << " ";
+
+	for (int i = 0; i < strlen(s); i++)
+	{
+		if (s[i] == s2[0])
+		{
+			cout << s[i - 1] << " " << s[i + 1] << " ";
+		}
+	}
+
+	cout << s[strlen(s)-1] << endl;
+
+	system("pause");
+	return 0;
+}
