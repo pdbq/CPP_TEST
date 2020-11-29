@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip>
+#include <Windows.h>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+
+	FILE * f;
+	char s[20];
+	int k, age = 100;
+	char name[20];
+
+	errno_t err;
+	err = fopen_s(&f, "input.txt", "r");
+	if (err != 0)
+		cout << "ERROR";
+	else
+	{
+		while (fscanf_s(f, "%s", s, _countof(s)) != EOF)
+		{
+			fscanf_s(f, "%d", &k);
+
+			if (age > k)
+			{
+				//cout << k << endl;
+				strcpy(name, s);
+				age = k;
+			}
+		}
+	}
+	fclose(f);
+
+	cout << name << " " << age;
+
+	err = fopen_s(&f, "output.txt", "w");
+	if (err != 0)
+		cout << "ERROR";
+	else
+	{
+		fprintf(f, "%s%s%d", name, " ", age);
+	}
+	fclose(f);
+
+	system("pause");
+	return 0;
+}
